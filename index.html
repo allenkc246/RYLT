@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The Revised Young’s Literal Translation (RYLT), a limited modernization that preserves Dr. Robert Young’s original sentence structure.">
+<title>The Revised Young’s Literal Translation (RYLT)</title>
+<style>
+  :root {
+    --ink: #202b3b;
+    --muted: #5d6a7b;
+    --paper: #fffdf7;
+    --cream: #f5f0df;
+    --gold: #c49a48;
+    --blue: #183653;
+    --blue2: #254e70;
+    --line: #e5dfcf;
+    --shadow: 0 12px 34px rgba(24, 42, 62, .09);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; color: var(--ink); background: var(--paper);
+    font-family: Georgia, "Times New Roman", serif; line-height: 1.72;
+  }
+  a { color: inherit; }
+  .hero {
+    position: relative; overflow: hidden; color: #fff;
+    padding: clamp(3.2rem, 8vw, 6.5rem) 1.25rem 4rem;
+    background: radial-gradient(circle at 85% 18%, rgba(196,154,72,.25), transparent 28%),
+                linear-gradient(135deg, #132b43 0%, #214b6b 68%, #183653 100%);
+  }
+  .hero::after {
+    content: "✦"; position: absolute; right: 7%; bottom: -5.5rem;
+    color: rgba(255,255,255,.055); font-size: clamp(13rem, 28vw, 24rem);
+    line-height: 1; pointer-events: none;
+  }
+  .hero-inner, main, footer { width: min(1080px, calc(100% - 2rem)); margin: 0 auto; }
+  .eyebrow {
+    margin: 0 0 .9rem; color: #e8c77e; font: 700 .78rem/1.4 Arial, sans-serif;
+    text-transform: uppercase; letter-spacing: .19em;
+  }
+  h1 { max-width: 850px; margin: 0; font-size: clamp(2.25rem, 5.7vw, 4.4rem); line-height: 1.09; font-weight: 600; letter-spacing: -.035em; }
+  .subtitle { max-width: 720px; margin: 1.25rem 0 0; color: #e1e9ef; font-size: clamp(1.05rem, 2vw, 1.3rem); }
+  .hero-rule { width: 84px; height: 4px; margin-top: 2rem; border-radius: 9px; background: var(--gold); }
+  .hero-nav { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2rem; }
+  .hero-nav a {
+    text-decoration: none; border: 1px solid rgba(255,255,255,.38);
+    border-radius: 999px; padding: .65rem 1.1rem; font: 700 .9rem Arial, sans-serif;
+    transition: background .2s, transform .2s;
+  }
+  .hero-nav a:hover { background: rgba(255,255,255,.12); transform: translateY(-1px); }
+  main { padding: 3.25rem 0 4.5rem; }
+  section { scroll-margin-top: 1.5rem; }
+  .section-heading { margin-bottom: 1.4rem; }
+  .section-heading .kicker { color: #8b6b2d; text-transform: uppercase; letter-spacing: .15em; font: 700 .76rem Arial, sans-serif; }
+  h2 { margin: .35rem 0 .6rem; color: var(--blue); font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.2; }
+  .lead { max-width: 760px; margin: 0; color: var(--muted); font-size: 1.08rem; }
+  .principle {
+    display: grid; grid-template-columns: 5px 1fr; gap: 1.1rem; align-items: stretch;
+    margin: 2rem 0 2.5rem; padding: 1.25rem 1.4rem; background: #f7f3e8;
+    border: 1px solid var(--line); border-radius: 14px;
+  }
+  .principle::before { content: ""; background: var(--gold); border-radius: 10px; }
+  .principle strong { color: var(--blue); }
+  .preface-card {
+    padding: clamp(1.25rem, 4vw, 2.75rem); background: #fff;
+    border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow);
+  }
+  .preface-card p { margin: 0 0 1.2rem; }
+  .preface-card p:last-child { margin-bottom: 0; }
+  .chapter-section { margin-top: 4.5rem; }
+  .chapter-topline { display: flex; justify-content: space-between; gap: 1rem; align-items: end; flex-wrap: wrap; }
+  .chapter-count { color: var(--muted); font: 700 .85rem Arial, sans-serif; }
+  .chapter-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; margin-top: 1.6rem; }
+  .chapter-link {
+    display: flex; justify-content: space-between; align-items: center; gap: .7rem;
+    min-height: 58px; padding: .9rem 1rem; background: #fff;
+    border: 1px solid var(--line); border-radius: 12px; color: var(--blue);
+    text-decoration: none; font: 700 .98rem/1.35 Arial, sans-serif;
+    box-shadow: 0 3px 12px rgba(24,42,62,.035);
+    transition: border-color .2s, background .2s, transform .2s, box-shadow .2s;
+  }
+  .chapter-link:hover, .chapter-link:focus-visible {
+    border-color: var(--gold); background: #fffcf3; transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(24,42,62,.08); outline: none;
+  }
+  .arrow { flex: 0 0 auto; color: #9b7a39; font-size: 1rem; }
+  .note {
+    margin-top: 2rem; padding: 1.2rem 1.4rem; color: var(--muted);
+    background: #f5f7f8; border-radius: 12px; font-size: .95rem;
+  }
+  footer { padding: 1.6rem 0 2.4rem; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
+  footer p { margin: 0; }
+  @media (max-width: 760px) { .chapter-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) {
+    .chapter-grid { grid-template-columns: 1fr; }
+    .chapter-link { min-height: 52px; }
+    .hero-nav a { flex: 1 1 auto; text-align: center; }
+  }
+  @media print {
+    body { background: #fff; font-size: 11pt; }
+    .hero { color: #000; background: #fff; padding: 1rem 0 1.5rem; }
+    .hero::after, .hero-nav, .arrow { display: none; }
+    .eyebrow, .subtitle { color: #333; }
+    h1, h2 { color: #000; }
+    main { padding: 1rem 0; }
+    .preface-card { box-shadow: none; }
+    .chapter-grid { grid-template-columns: repeat(3, 1fr); gap: .35rem; }
+    .chapter-link { min-height: 0; padding: .4rem; box-shadow: none; }
+    .chapter-section { margin-top: 2rem; }
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">New Testament · A limited modernization</p>
+    <h1>The Revised Young’s<br>Literal Translation</h1>
+    <p class="subtitle">Preserving Dr. Robert Young’s original sentence structure while updating archaic English word endings for today’s readers.</p>
+    <div class="hero-rule"></div>
+    <nav class="hero-nav" aria-label="Page navigation">
+      <a href="#preface">Read the Preface</a>
+      <a href="#books">Explore the New Testament</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section id="preface" aria-labelledby="preface-title">
+    <div class="section-heading">
+      <span class="kicker">About this edition</span>
+      <h2 id="preface-title">Preface</h2>
+      <p class="lead">A note on the purpose and method of the Revised Young’s Literal Translation.</p>
+    </div>
+    <div class="principle">
+      <div><strong>The guiding principle:</strong> Dr. Young’s original sentence structure is retained. This edition updates archaic word endings and provides contemporary equivalents in notes for selected words, without recasting the original sentences.</div>
+    </div>
+    <article class="preface-card">
+      <p>The Revised Young’s Literal Translation (RYLT) is an effort to make the New Testament of Dr. Robert Young’s <em>Young’s Literal Translation of the Holy Bible</em> (YLT), published in its revised edition in 1898, more accessible to contemporary readers while preserving the distinctive characteristics of his original work.</p>
+<p>Dr. Young’s translation has long been valued by students of Scripture for its commitment to a literal rendering of the biblical text. Rather than freely paraphrasing the words of the biblical writers or extensively reshaping their expressions to conform to ordinary English usage, Young sought to represent the original Greek text as closely as possible. His work reflects a deliberate concern for the wording, grammatical forms, and sentence structure of the original language.</p>
+<p>The defining principle of this Revised Young’s Literal Translation is that <strong>Dr. Young’s original sentence structure is retained.</strong> Unlike revisions that reorganize sentences, rearrange clauses, or substantially rewrite expressions to produce a more contemporary reading experience, the RYLT preserves the sentence construction found in Young’s work. The objective is to maintain the distinctive form in which Dr. Young presented the New Testament while making limited linguistic adjustments for modern readers.</p>
+<p>The principal changes in this edition concern archaic English word endings associated with Elizabethan English and the language familiar from the King James Version. Such forms, which were still encountered in English biblical translations during Young’s era, can be unfamiliar to readers today. The RYLT updates these archaic endings without changing Dr. Young’s sentence structure. In this way, the reader can follow the original construction of his translation without being unnecessarily hindered by obsolete forms of English.</p>
+<p>In addition, certain words are accompanied by notes that offer a more contemporary equivalent alongside Dr. Young’s original word. These notes are intended to assist readers who may be unfamiliar with older vocabulary while preserving the historical wording of the translation. Rather than silently substituting a modern expression wherever an older word appears, this approach allows readers to see Young’s original language and consider a more familiar equivalent when one is provided.</p>
+<p>This method reflects an important distinction between updating language and revising a translation’s structure. Modernizing archaic word endings does not require rewriting sentences, and explaining an older word does not require abandoning the original expression. By keeping these changes limited, the RYLT seeks to preserve the character and integrity of Young’s work while helping contemporary readers understand the language in which it is presented.</p>
+<p>The RYLT is therefore not intended to be a paraphrase or a substantially reworded translation. It is a carefully limited modernization of the original YLT, retaining Dr. Young’s sentence structure and wording as its foundation while addressing specific features of older English that may present difficulties for modern readers. The reader encounters Young’s translation, not a new sentence-by-sentence interpretation imposed upon it.</p>
+<p>This edition includes the twenty-seven books of the New Testament, from Matthew through Revelation. Readers are encouraged to consider each passage in its literary and historical context and to compare the text with the original YLT and other translations when further clarification is needed. The notes accompanying selected words may also prove useful in examining the relationship between Young’s original terminology and contemporary English equivalents.</p>
+<p>As with any work of biblical translation and revision, careful study remains essential. A word’s meaning depends upon its context, and no single English equivalent can always communicate every nuance of the original Greek. The RYLT does not claim to remove all interpretive difficulties from the biblical text. Its purpose is more specific: to make the language of Young’s translation more accessible without altering the sentence structure through which he expressed his understanding of the original text.</p>
+<p>This work is offered with respect for Dr. Robert Young and his contribution to biblical scholarship. His commitment to literal translation provides the foundation for this edition, and the limited nature of the revision reflects a desire to preserve rather than replace his work.</p>
+<p>May the Revised Young’s Literal Translation help readers engage more readily with the New Testament, appreciate the distinctive character of Dr. Young’s translation, and pursue a deeper and more careful study of the Scriptures.</p>
+    </article>
+  </section>
+
+  <section class="chapter-section" id="books" aria-labelledby="books-title">
+    <div class="chapter-topline">
+      <div class="section-heading">
+        <span class="kicker">Read the text</span>
+        <h2 id="books-title">The New Testament</h2>
+        <p class="lead">Choose a book to begin reading the RYLT.</p>
+      </div>
+      <span class="chapter-count">27 books</span>
+    </div>
+    <div class="chapter-grid">
+      <a class="chapter-link" href="01-matthew_rylt.html"><span>Matthew</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="02-mark_rylt.html"><span>Mark</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="03-luke_rylt.html"><span>Luke</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="04-john_rylt.html"><span>John</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="05-acts_rylt.html"><span>Acts</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="06-romans_rylt.html"><span>Romans</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="07-1corinthians_rylt.html"><span>1 Corinthians</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="08-2corinthians_rylt.html"><span>2 Corinthians</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="09-galatians_rylt.html"><span>Galatians</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="10-ephesians_rylt.html"><span>Ephesians</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="11-philippians_rylt.html"><span>Philippians</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="12-colossians_rylt.html"><span>Colossians</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="13-1thessalonians_rylt.html"><span>1 Thessalonians</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="14-2thessalonians_rylt.html"><span>2 Thessalonians</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="15-1timothy_rylt.html"><span>1 Timothy</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="16-2timothy_rylt.html"><span>2 Timothy</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="17-titus_rylt.html"><span>Titus</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="18-philemon_rylt.html"><span>Philemon</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="19-hebrews_rylt.html"><span>Hebrews</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="20-james_rylt.html"><span>James</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="21-1peter_rylt.html"><span>1 Peter</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="22-2peter_rylt.html"><span>2 Peter</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="23-1john_rylt.html"><span>1 John</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="24-2john_rylt.html"><span>2 John</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="25-3john_rylt.html"><span>3 John</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="26-jude_rylt.html"><span>Jude</span><span class="arrow" aria-hidden="true">↗</span></a>
+<a class="chapter-link" href="27-revelation_rylt.html"><span>Revelation</span><span class="arrow" aria-hidden="true">↗</span></a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>The Revised Young’s Literal Translation (RYLT) · New Testament · Work in progress</p>
+</footer>
+</body>
+</html>
